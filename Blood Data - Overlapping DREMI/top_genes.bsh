@@ -3,17 +3,11 @@ read gene1
 read gene2
 read dremival
 
-echo "Gene 1" >> file2.csv
-echo $gene1 >> file2.csv
-awk -v var="$gene1" '$2 ~ var {print}' Whole_Blood_Analysissnpgenes.csv >> file2.csv
+echo "Gene 1 snp_chrom snp_pos rs_id_dbSNP142_GRCh37p13 dremi" >> file2.csv
+awk -v var="$gene1" -v drem="$dremival" '$2 ~ var {print var, $14, $15, $23, drem}' Whole_Blood_Analysissnpgenes.csv >> file2.csv
 
-echo "Gene 2" >> file2.csv
-echo $gene2 >> file2.csv
-awk -v var="$gene2" '$2 ~ var {print}' Whole_Blood_Analysissnpgenes.csv >> file2.csv
-
-echo "Dremi val" >> file2.csv
-echo $dremival >> file2.csv
-echo -e "\n" >> file2.csv
+echo "Gene 2 snp_chrom snp_pos rs_id_dbSNP142_GRCh37p13 dremi" >> file2.csv
+awk -v var="$gene2" -v drem="$dremival" '$2 ~ var {print var, $14, $15, $23, drem}' Whole_Blood_Analysissnpgenes.csv >> file2.csv
 
 # Inputs for top 10 genes for blood sample:
 # ENSG00000167895.10
