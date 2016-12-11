@@ -1,0 +1,5 @@
+#!/bin/bash
+while read input
+do
+	awk -v var="$input" '$2 ~ var {print var, $14}' Whole_Blood_Analysissnpgenes.csv >> genechromos.csv
+done
